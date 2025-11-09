@@ -1,0 +1,138 @@
+/* Убираем все стандартные отступы у браузера */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    object-fit: cover;
+}
+
+.hero-content {
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.hero-content p {
+    font-size: 28px;
+    font-weight: 400;
+    margin-top: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button {
+    display: inline-block; /* Для правильного отображения отступов у ссылки */
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: #24A1DE;
+    border-radius: 50px;
+    padding: 20px 40px; 
+    margin-top: 80px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* НОВОЕ: убираем подчеркивание у ссылки */
+}
+
+.button:hover {
+    background-color: #2386b6;
+}
+
+.hero-footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+}
+
+.hero-footer p {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+/* ====================================================== */
+/* ===                  Адаптация                      === */
+/* ====================================================== */
+
+/* Стили для ПЛАНШЕТОВ (экраны до 1024px) */
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 40px;
+    }
+    .hero-content p {
+        font-size: 22px;
+        max-width: 650px;
+    }
+    .button {
+        padding: 30px 70px;
+    }
+}
+
+/* Стили для СМАРТФОНОВ (экраны до 768px) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 26px;
+    }
+    .hero-content p {
+        font-size: 18px;
+        margin-top: 30px;
+    }
+    .button {
+        font-size: 16px;
+        margin-top: 60px;
+        max-width: 335px; 
+        width: 100%;      
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .hero-footer p {
+        font-size: 16px;
+    }
+}
