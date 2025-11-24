@@ -12,7 +12,8 @@ body {
 
 .hero {
     position: relative;
-    height: 100vh;
+    height: 100vh; /* Фолбэк для старых браузеров */
+    height: 100dvh; /* НОВОЕ: Для мобильных браузеров */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -64,7 +65,7 @@ h1 {
 }
 
 .button {
-    display: inline-block; /* Для правильного отображения отступов у ссылки */
+    display: inline-block;
     font-size: 18px;
     font-weight: 500;
     color: #ffffff;
@@ -75,7 +76,7 @@ h1 {
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    text-decoration: none; /* НОВОЕ: убираем подчеркивание у ссылки */
+    text-decoration: none;
 }
 
 .button:hover {
