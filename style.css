@@ -5,17 +5,16 @@
     box-sizing: border-box;
 }
 
+
 body {
     font-family: 'Montserrat', sans-serif;
     color: #ffffff;
-    /* Черный фон на всякий случай */
-    background-color: #000;
 }
+
 
 .hero {
     position: relative;
-    height: 100vh; /* Фолбэк */
-    height: 100dvh; /* Для мобильных */
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,49 +23,43 @@ body {
     overflow: hidden;
 }
 
-/* Затемнение видео */
+
 .hero::after {
     content: '';
-    position: fixed; /* Тоже фиксируем, чтобы оно покрыло видео */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: -1; /* Лежит поверх видео (-2), но под контентом (1) */
+    z-index: 0;
 }
 
-/* ВИДЕО: НОВЫЙ ПОДХОД */
+
 .hero-video {
-    position: fixed; /* Фиксируем относительно ОКНА БРАУЗЕРА, игнорируя всё */
-    top: 0;
-    left: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     min-width: 100%;
     min-height: 100%;
-    
-    /* Растягиваем чуть больше экрана, чтобы точно перекрыть края */
-    width: 110vw;
-    height: 110vh;
-    left: -5vw;
-    top: -5vh;
-    
+    z-index: -1;
     object-fit: cover;
-    z-index: -2; /* Самый нижний слой */
 }
+
 
 .hero-content {
     padding: 0 20px;
     position: relative;
     z-index: 1;
-    
-    /* Чтобы текст не залез под челку, добавляем отступ только ему */
-    padding-top: env(safe-area-inset-top);
 }
+
 
 h1 {
     font-size: 50px;
     font-weight: 600;
 }
+
 
 .hero-content p {
     font-size: 28px;
@@ -77,8 +70,9 @@ h1 {
     margin-right: auto;
 }
 
+
 .button {
-    display: inline-block;
+    display: inline-block; /* Для правильного отображения отступов у ссылки */
     font-size: 18px;
     font-weight: 500;
     color: #ffffff;
@@ -89,12 +83,14 @@ h1 {
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    text-decoration: none;
+    text-decoration: none; /* НОВОЕ: убираем подчеркивание у ссылки */
 }
+
 
 .button:hover {
     background-color: #2386b6;
 }
+
 
 .hero-footer {
     position: absolute;
@@ -102,34 +98,55 @@ h1 {
     width: 100%;
     text-align: center;
     z-index: 1;
-    /* Безопасный отступ снизу */
-    padding-bottom: env(safe-area-inset-bottom);
 }
+
 
 .hero-footer p {
     font-size: 18px;
     font-weight: 400;
 }
 
+
 /* ====================================================== */
 /* ===                  Адаптация                      === */
 /* ====================================================== */
 
+
+/* Стили для ПЛАНШЕТОВ (экраны до 1024px) */
 @media (max-width: 1024px) {
-    h1 { font-size: 40px; }
-    .hero-content p { font-size: 22px; max-width: 650px; }
-    .button { padding: 30px 70px; }
+    h1 {
+        font-size: 40px;
+    }
+    .hero-content p {
+        font-size: 22px;
+        max-width: 650px;
+    }
+    .button {
+        padding: 30px 70px;
+    }
 }
 
+
+/* Стили для СМАРТФОНОВ (экраны до 768px) */
 @media (max-width: 768px) {
-    h1 { font-size: 26px; }
-    .hero-content p { font-size: 18px; margin-top: 30px; }
+    h1 {
+        font-size: 26px;
+    }
+    .hero-content p {
+        font-size: 18px;
+        margin-top: 30px;
+    }
     .button {
         font-size: 16px;
         margin-top: 60px;
         max-width: 335px; 
         width: 100%;      
-        padding: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
-    .hero-footer p { font-size: 16px; }
+    .hero-footer p {
+        font-size: 16px;
+    }
 }
