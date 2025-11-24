@@ -65,5 +65,30 @@
     </footer>
     <!-- === Конец главного экрана === -->
 
+    <script>
+        // Обработка safe-area для видео
+        const video = document.querySelector('.hero-video');
+        const hero = document.querySelector('.hero');
+        
+        function updateVideoPosition() {
+            const topInset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--safe-area-inset-top')) || 0;
+            const bottomInset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--safe-area-inset-bottom')) || 0;
+            
+            // Добавляем отрицательный top margin для видео чтобы оно заходило под челку
+            if (topInset > 0) {
+                video.style.marginTop = `-${topInset}px`;
+                video.style.height = `calc(100dvh + ${topInset}px)`;
+            }
+        }
+        
+        // Обновляем при загрузке
+        window.addEventListener('load', updateVideoPosition);
+        window.addEventListener('resize', updateVideoPosition);
+        window.addEventListener('orientationchange', updateVideoPosition);
+        
+        // Сразу при инициализации
+        updateVideoPosition();
+    </script>
+
 </body>
 </html>
