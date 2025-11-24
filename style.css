@@ -5,21 +5,35 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
+    width: 100%;
+    height: 100%;
     font-family: 'Montserrat', sans-serif;
     color: #ffffff;
+    
+    /* ЗАПРЕЩАЕМ СКРОЛЛ И ОТСКОК */
+    overflow: hidden;
+    overscroll-behavior: none;
+}
+
+/* Добавляем безопасные отступы для контента (но не для видео!) */
+body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 }
 
 .hero {
     position: relative;
-    height: 100vh; /* Фолбэк для старых браузеров */
-    height: 100dvh; /* НОВОЕ: Для мобильных браузеров */
+    height: 100vh; /* Фолбэк */
+    height: 100dvh; /* Для мобильных браузеров */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    overflow: hidden;
+    /* overflow: hidden; - уже есть в body, но можно оставить для надежности */
 }
 
 .hero::after {
@@ -33,6 +47,7 @@ body {
     z-index: 0;
 }
 
+/* Видео игнорирует безопасные зоны и заливает ВЕСЬ экран */
 .hero-video {
     position: absolute;
     top: 50%;
@@ -100,7 +115,7 @@ h1 {
 /* ===                  Адаптация                      === */
 /* ====================================================== */
 
-/* Стили для ПЛАНШЕТОВ (экраны до 1024px) */
+/* ПЛАНШЕТЫ */
 @media (max-width: 1024px) {
     h1 {
         font-size: 40px;
@@ -114,7 +129,7 @@ h1 {
     }
 }
 
-/* Стили для СМАРТФОНОВ (экраны до 768px) */
+/* СМАРТФОНЫ */
 @media (max-width: 768px) {
     h1 {
         font-size: 26px;
