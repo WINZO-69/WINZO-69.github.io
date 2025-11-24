@@ -34,7 +34,23 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    overflow: visible;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background-image: url('video/background.mp4');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+    object-fit: cover;
 }
 
 .hero::after {
@@ -51,15 +67,7 @@ body {
 }
 
 .hero-video {
-    position: fixed;
-    top: -100px;
-    left: 0;
-    width: 100vw;
-    height: calc(100vh + 200px);
-    height: calc(100dvh + 200px);
-    z-index: -1;
-    object-fit: cover;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    display: none;
 }
 
 .hero-content {
