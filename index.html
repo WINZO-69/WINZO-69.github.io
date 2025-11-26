@@ -4,39 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
-    <!-- !!! ВАЖНОЕ ДОБАВЛЕНИЕ !!! -->
     <!-- Красим интерфейс браузера (челку) в черный цвет -->
     <meta name="theme-color" content="#000000">
-    <!-- Для старых версий iOS -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
     <!-- Основные SEO-теги -->
     <title>KinoVerse — Обзоры и рецензии на лучшие фильмы</title>
     <meta name="description" content="Не знаете, что посмотреть? Наш Telegram-канал KinoVerse предлагает подробные обзоры и рецензии на лучшие фильмы и сериалы. Найдите свой фильм на вечер!">
 
-    <!-- Open Graph разметка для соцсетей (Telegram, VK, Facebook и т.д.) -->
+    <!-- Open Graph -->
     <meta property="og:title" content="KinoVerse — Обзоры и рецензии на лучшие фильмы">
     <meta property="og:description" content="Подробные обзоры и эксклюзивные подборки кино в нашем Telegram-канале.">
     <meta property="og:image" content="https://kinoverse.ru/social-image.png">
     <meta property="og:url" content="https://kinoverse.ru">
     <meta property="og:type" content="website">
     
-    <!-- Favicon (иконка сайта) для всех браузеров -->
+    <!-- Favicon -->
     <link rel="icon" href="/favicon.png" type="image/png">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-    <!-- Подключаем наш файл со стилями -->
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Подключаем шрифт Montserrat с Google Fonts -->
+    <!-- Шрифты -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Yandex.Metrika counter -->
+    <!-- Yandex.Metrika -->
     <script type="text/javascript">
         (function(m,e,t,r,i,k,a){
             m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -44,40 +42,34 @@
             for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
             k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
         })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104935324', 'ym');
-
         ym(104935324, 'init', {ssr:true, webvisor:true, clickmap:true, accurateTrackBounce:true, trackLinks:true});
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/104935324" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
 
     <!-- === Главный экран === -->
     <main class="hero">
-        <!-- Фоновое видео -->
         <video class="hero-video" loop muted autoplay playsinline>
             <source src="video/background.mp4" type="video/mp4">
         </video>
 
-        <!-- Основной контент -->
         <div class="hero-content">
             <h1>Не знаете, что посмотреть сегодня вечером?</h1>
             <p>Подробные обзоры лучших фильмов и сериалов всех лет в нашем Telegram-канале</p>
 
-            <!-- ПРЯМАЯ ССЫЛКА В ТЕЛЕГРАМ ЧЕРЕЗ DEEP LINK -->
+            <!-- КНОПКА С ИКОНКОЙ (SVG внутри) -->
             <a href="tg://resolve?domain=KinoVerseFilms" class="button">
-                Найти фильм на вечер
+                <!-- Иконка самолетика -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="button-icon">
+                    <path d="M20.665 3.333L3.333 10.665L9.333 12.665L18.665 5.333L11.333 14.665L16.665 18.665L20.665 3.333Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Перейти в Telegram-канал</span>
             </a>
         </div>
     </main>
     
-    <!-- Нижний текст (копирайт) -->
     <footer class="hero-footer">
         <p>KinoVerse Production © 2025.</p>
     </footer>
-    <!-- === Конец главного экрана === -->
-
-    <script>
-        // Скрипт больше не нужен для видео, так как мы решили проблему через CSS
-    </script>
 
 </body>
 </html>

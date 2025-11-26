@@ -9,7 +9,6 @@ html {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    /* !!! ВАЖНО: Красим подложку браузера в черный */
     background-color: #000000; 
 }
 
@@ -20,7 +19,6 @@ body {
     font-family: 'Montserrat', sans-serif;
     color: #ffffff;
     position: fixed;
-    /* !!! ВАЖНО: Красим тело сайта в черный */
     background-color: #000000; 
 }
 
@@ -39,7 +37,6 @@ body {
     align-items: center;
     text-align: center;
     overflow: hidden;
-    /* На всякий случай тоже черный */
     background-color: #000000; 
 }
 
@@ -94,14 +91,23 @@ h1 {
     max-width: 800px;
 }
 
+/* --- СТИЛИ ДЛЯ НОВОЙ КНОПКИ --- */
 .button {
-    display: inline-block;
+    /* Делаем кнопку флекс-контейнером для выравнивания иконки и текста */
+    display: inline-flex; 
+    align-items: center;
+    justify-content: center;
+    
+    /* Твои настройки расстояний */
+    gap: 15px; /* Расстояние между иконкой и текстом */
+    padding: 20px 25px; /* 20 сверху/снизу, 25 по бокам */
+    
     font-size: 18px;
     font-weight: 500;
     color: #ffffff;
     background-color: #24A1DE;
     border-radius: 50px;
-    padding: 20px 40px;
+    
     margin-top: 80px;
     border: none;
     cursor: pointer;
@@ -109,6 +115,13 @@ h1 {
     text-decoration: none;
     flex-shrink: 0;
 }
+
+.button-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+/* ---------------------------- */
 
 .button:hover {
     background-color: #2386b6;
@@ -127,8 +140,6 @@ h1 {
     padding-bottom: max(20px, env(safe-area-inset-bottom));
     text-align: center;
     z-index: 2;
-    /* Убираем градиент, если хочешь чистый черный снизу, 
-       или оставляем как есть для красоты */
     background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.5));
     height: auto;
 }
@@ -143,7 +154,6 @@ h1 {
 /* ===                  Адаптация                      === */
 /* ====================================================== */
 
-/* Стили для ПЛАНШЕТОВ (экраны до 1024px) */
 @media (max-width: 1024px) {
     h1 {
         font-size: 40px;
@@ -152,11 +162,11 @@ h1 {
         font-size: 22px;
     }
     .button {
-        padding: 30px 70px;
+        padding: 30px 70px; /* Тут можно оставить большие падинги для планшетов */
     }
 }
 
-/* Стили для СМАРТФОНОВ (экраны до 768px) */
+/* СМАРТФОНЫ (до 768px) */
 @media (max-width: 768px) {
     h1 {
         font-size: 28px;
@@ -165,22 +175,40 @@ h1 {
         font-size: 16px;
         margin-top: 20px;
     }
+    
+    /* ТВОЕ ТРЕБОВАНИЕ: Отступы по 20px от краев экрана */
     .button {
         font-size: 16px;
         margin-top: 40px;
-        width: 100%;
-        max-width: 300px;
-        padding: 16px 30px;
+        
+        /* Кнопка занимает 100% ширины контейнера */
+        width: 100%; 
+        /* Но мы ограничиваем контейнер отступами */
+        margin-left: 20px;
+        margin-right: 20px;
+        /* Убираем max-width, чтобы она тянулась на всю доступную ширину (минус отступы) */
+        max-width: calc(100% - 40px); 
+        
+        padding: 16px 0; /* Высоту регулируем падингом сверху/снизу */
     }
+    
     .hero-footer p {
         font-size: 14px;
     }
     .hero-content {
         padding-bottom: 120px;
+        padding-left: 0; /* Убираем падинг контейнера, чтобы контролировать кнопку марджинами */
+        padding-right: 0;
+    }
+    
+    /* Текст внутри контейнера все равно должен иметь отступы */
+    .hero-content h1, 
+    .hero-content p {
+        padding-left: 20px;
+        padding-right: 20px;
     }
 }
 
-/* Для очень маленьких экранов */
 @media (max-height: 600px) {
     h1 {
         font-size: 24px;
@@ -192,7 +220,7 @@ h1 {
     }
     .button {
         margin-top: 20px;
-        padding: 12px 24px;
+        padding: 12px 0;
         font-size: 14px;
     }
     .hero-content {
